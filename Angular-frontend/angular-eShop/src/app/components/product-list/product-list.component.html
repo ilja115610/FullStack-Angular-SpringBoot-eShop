@@ -1,7 +1,8 @@
 <div class="main-content">
 
   <div class="section-content section-content-p30">
-    <h4>Category: {{ category_name }}</h4>
+    <h4 *ngIf="searchMode; else elseBlock">Keyword: {{this.route.snapshot.paramMap.get('keyword')}}</h4>
+    <ng-template #elseBlock><h4>Category: {{category_name}}</h4></ng-template>
     <hr>
     <div class="container-fluid">
       <div class="row">
