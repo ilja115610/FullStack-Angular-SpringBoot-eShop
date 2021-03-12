@@ -1,8 +1,8 @@
-#Online shop (eShop)
+# Online shop (eShop)
 
 _IN PROGRESS_...
 
-<u>Full-stack Web Application using Angular & SpringBoot (RestFull API).</u>
+<u> Full-stack Web Application using Angular & SpringBoot (RestFull API). </u>
 
 ##### Used Technologies & Tools:
 
