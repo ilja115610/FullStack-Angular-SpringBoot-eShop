@@ -12,7 +12,7 @@ export class ProductService {
 
   private baseUrl = 'http://localhost:8080/api/products';
 
-  private categoryUrl = 'http://localhost:8080/api/product-category'
+  private categoryUrl = 'http://localhost:8080/api/product-category';
 
 
   constructor( private httpClient: HttpClient) { }
@@ -42,6 +42,15 @@ export class ProductService {
     );
 
   }
+
+  getProduct(productId: number): Observable<Product> {
+
+    const url = `${this.baseUrl}/${productId}`;
+
+    return this.httpClient.get<Product>(url).pipe(
+      map(response=>response)
+    )
+  };
 }
 
 interface GetResponseProduct {

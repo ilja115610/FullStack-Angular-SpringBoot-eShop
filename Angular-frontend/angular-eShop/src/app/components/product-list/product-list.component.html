@@ -9,9 +9,14 @@
 
         <div *ngFor="let tempPro of products" class="col-md-3">
             <div class="product-box">
-              <img src="{{tempPro.imageUrl}}" class="img-responsive">
-              <h1>{{tempPro.name}}</h1>
-              <div class="price">{{tempPro.unitPrice | currency: 'USD'}}</div>
+
+              <a routerLink="/products/{{tempPro.id}}">
+              <img src="{{tempPro.imageUrl}}" class="img-responsive" alt="img"/>
+              </a>
+              <h1>
+              <a routerLink="/products/{{tempPro.id}}">{{tempPro.name}}</a>
+              </h1>
+                <div class="price">{{tempPro.unitPrice | currency: 'USD'}}</div>
               <a href="#" class="primary-btn">Add to Cart</a>
             </div>
         </div>
