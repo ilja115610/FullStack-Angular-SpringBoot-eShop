@@ -1,0 +1,26 @@
+<div class="main-content">
+
+  <div class="section-content section-content-p30">
+    <h4>Category: {{ category_name }}</h4>
+    <hr>
+    <div class="container-fluid">
+      <div class="row">
+
+        <div *ngFor="let tempPro of products" class="col-md-3">
+            <div class="product-box">
+              <img src="{{tempPro.imageUrl}}" class="img-responsive">
+              <h1>{{tempPro.name}}</h1>
+              <div class="price">{{tempPro.unitPrice | currency: 'USD'}}</div>
+              <a href="#" class="primary-btn">Add to Cart</a>
+            </div>
+        </div>
+
+        <div *ngIf="products?.length==0" class="alert alert-warning col-md-12" role="alert">No products found.</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
