@@ -1,18 +1,18 @@
-**Online shop (eShop)**
+#Online shop (eShop)
 
 _IN PROGRESS_...
 
-Full-stack Web Application using Angular & SpringBoot (RestFull API).
+<u>Full-stack Web Application using Angular & SpringBoot (RestFull API).</u>
 
-###### Used Technologies & Tools:
+##### Used Technologies & Tools:
 
-Front-end
+<u>Front-end</u>
 
 * Angular 11
 
 * Bootstrap 4.6.0
 
-Back-end
+<u>Back-end</u>
 
 * Spring-Boot 2.4.3 (Spring REST/ Spring Data JPA)
 
