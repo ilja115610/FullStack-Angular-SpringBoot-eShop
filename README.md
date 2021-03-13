@@ -24,8 +24,8 @@ _IN PROGRESS_...
 
 * MySQL
 
+##
 
-
-** Screenshots: to be added **
+**Screenshots: to be added**
 
 ** Live demo on Heroku: to be deployed **
