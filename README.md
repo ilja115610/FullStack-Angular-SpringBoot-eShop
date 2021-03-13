@@ -6,7 +6,7 @@ _IN PROGRESS_...
 
 ##### Used Technologies & Tools:
 
-<u>Front-end</u>
+## Front-end
 
 * TypeScript
 
@@ -14,7 +14,7 @@ _IN PROGRESS_...
 
 * Bootstrap 4.6.0
 
-<u>Back-end</u>
+## Back-end
 
 * Java 12
 
