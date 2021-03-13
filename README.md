@@ -18,7 +18,7 @@ _IN PROGRESS_...
 
 * Hibernate
 
-* MySQL RDBMS
+* MySQL
 
 
 
