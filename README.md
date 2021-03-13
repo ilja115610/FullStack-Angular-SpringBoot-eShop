@@ -16,6 +16,8 @@ _IN PROGRESS_...
 
 * Spring-Boot 2.4.3 (Spring REST/ Spring Data JPA)
 
+* Hibernate
+
 * MySQL RDBMS
 
 
