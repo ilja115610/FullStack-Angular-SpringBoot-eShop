@@ -26,6 +26,6 @@ _IN PROGRESS_...
 
 
 
-Screenshots: to be added
+**Screenshots: to be added
 
-Live demo on Heroku: to be deployed
+**Live demo on Heroku: to be deployed
