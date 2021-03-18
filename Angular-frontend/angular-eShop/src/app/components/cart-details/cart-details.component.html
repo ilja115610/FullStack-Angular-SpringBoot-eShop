@@ -1,0 +1,44 @@
+<div class="main-content">
+<div class="section-content section-content-p30">
+  <div class="container-fluid">
+    <div *ngIf="cartItems.length>0">
+<table class="table table-bordered">
+  <thead>
+  <tr >
+    <th width="20%">Product Image</th>
+    <th width="50%">Product Details</th>
+    <th width="30%">Cart status</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let tempItem of cartItems">
+      <td><img class="img-responsive" width="150px" src="{{tempItem.imageUrl}}" alt="img"></td>
+      <td style="font-weight: bolder">{{tempItem.name}}
+      <p class="mt-2"> {{tempItem.unitPrice | currency: 'USD'}}</p>
+      </td>
+      <td style="font-weight: bolder"> <div class="items"> <label> Quantity:{{tempItem.quantity}}</label>
+      <p class="mt-2">Subtotal: {{tempItem.quantity*tempItem.unitPrice | currency: 'USD'}}</p>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+<tr>
+  <td colspan="2"></td>
+  <td style="font-weight: bold; color: cornflowerblue" >
+    <p>Total qty: {{totalQty}}</p>
+    <p>Shipping: FREE</p>
+    <p>Total Price: {{totalPrice| currency: 'USD'}}</p>
+    <a routerLink="/checkout" class="btn btn-success" >Checkout</a>
+  </td>
+</tr>
+</table>
+    </div>
+
+    <div *ngIf="cartItems.length>0; else elseBlock" ></div>
+  <ng-template  #elseBlock><div class="alert alert-warning col-md-12" role="alert">Your shopping cart is empty.</div></ng-template>
+
+
+  </div>
+</div>
+
+</div>

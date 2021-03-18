@@ -136,7 +136,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-  background:#0da8e4;
+  background: #408299;
   -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -944,7 +944,7 @@ footer ul li{
     margin-right:15px
   }
   .main-content.page-m{
-    padding:10% 0!important
+    padding:10% 30% 10% 5%!important
   }
   .header-mobile .navbar-mobile{
     display:none;

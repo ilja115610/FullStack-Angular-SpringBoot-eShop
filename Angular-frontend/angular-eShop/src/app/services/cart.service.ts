@@ -39,7 +39,7 @@ export class CartService {
 
   }
 
-  private computeCartTotals() {
+   computeCartTotals() {
 
     let totalPriceValue: number = 0;
     let totalQtyValue: number = 0;
@@ -52,6 +52,5 @@ export class CartService {
     this.totalPrice.next(totalPriceValue);
     this.totalQty.next(totalQtyValue);
 
-    console.log(`Total items: ${totalQtyValue} Total price: ${totalPriceValue}`);
   }
 }
