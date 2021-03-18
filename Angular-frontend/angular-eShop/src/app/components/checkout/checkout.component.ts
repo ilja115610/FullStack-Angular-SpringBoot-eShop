@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {CreditCardService} from '../../services/credit-card.service';
 
 @Component({
   selector: 'app-checkout',
@@ -10,7 +11,11 @@ export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  creditCardYears: number [] = [];
+
+  creditCardMonths: number [] = [];
+
+  constructor(private formBuilder: FormBuilder, private creditCardService: CreditCardService) { }
 
   ngOnInit(): void {
 
@@ -44,6 +49,11 @@ export class CheckoutComponent implements OnInit {
       })
     });
 
+    this.populateMonths();
+
+    this.populateYears();
+
+
     }
 
   onSubmit() {
@@ -59,5 +69,25 @@ export class CheckoutComponent implements OnInit {
       this.checkoutFormGroup.controls.billingAddress.reset();
     }
   }
+
+
+  populateYears () {
+
+    this.creditCardService.getCreditCardYears().subscribe(
+      data=>this.creditCardYears = data
+    );
+
+  }
+
+  populateMonths () {
+
+    const startMonths = new Date().getMonth() + 1;
+
+    this.creditCardService.getCreditCardMonths(startMonths).subscribe(
+      data=>this.creditCardMonths = data
+    );
+
+  }
+
 
 }
