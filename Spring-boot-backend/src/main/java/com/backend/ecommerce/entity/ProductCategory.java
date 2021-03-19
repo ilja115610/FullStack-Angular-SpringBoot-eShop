@@ -1,5 +1,6 @@
 package com.backend.ecommerce.entity;
 
+import com.backend.ecommerce.entity.Product;
 import lombok.Getter;
 import lombok.Setter;
 
