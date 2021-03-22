@@ -26,8 +26,14 @@ _IN PROGRESS_...
 
 ##
 
+##@Testing
+
+**Persistence:**
+
 **Spring Data JPA Repository Testing**
 
-**Screenshots: to be added**
+##Demo
 
-**Live demo on Heroku: to be deployed**
+**Screenshots and video: to be added**
+
+

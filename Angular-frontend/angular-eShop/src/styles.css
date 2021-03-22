@@ -326,9 +326,9 @@ input.au-input.au-input-xl{
 }
 
 .menu-sidebar .logo{
-  background:#fff;
+  background: #fcfdff;
   height:75px;
-  padding:0 35px;
+  padding:0 0px;
   display:-webkit-box;
   display:-webkit-flex;
   display:-moz-box;
@@ -370,13 +370,17 @@ input.au-input.au-input-xl{
 
 .navbar-sidebar .navbar-list li a{
   display:block;
-  color:#555;
-  font-size:16px;
-  padding:5px 0
+  color: #2a424e;
+  font-size:18px;
+  font-weight: bolder;
+  text-decoration: underline;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  padding:19px 0
 }
 
 .navbar-sidebar .navbar-list li a i{
   margin-right:19px
+
 }
 
 .navbar-sidebar .navbar-list li a:hover{
@@ -1000,7 +1004,8 @@ footer ul li{
   }
   input.au-input.au-input-xl{
     border-radius:0!important;
-    margin-right:0
+    margin-right:0;
+
   }
   .cart-area.d-b{
     display:block

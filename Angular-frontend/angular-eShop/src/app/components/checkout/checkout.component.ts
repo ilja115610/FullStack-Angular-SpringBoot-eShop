@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CreditCardService} from '../../services/credit-card.service';
+import {FormService} from '../../services/form.service';
+import {Country} from '../../common/country';
+import {State} from '../../common/state';
 
 @Component({
   selector: 'app-checkout',
@@ -15,22 +18,30 @@ export class CheckoutComponent implements OnInit {
 
   creditCardMonths: number [] = [];
 
-  constructor(private formBuilder: FormBuilder, private creditCardService: CreditCardService) { }
+  countries: Country [] = [];
+
+  shippingAddressStates: State [] = [];
+
+  billingAddressStates : State [] = [];
+
+  constructor(private formBuilder: FormBuilder, private creditCardService: CreditCardService, private formService: FormService) { }
 
   ngOnInit(): void {
 
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
-        firstName: [''],
-        lastName: [''],
-        email: ['']
+        firstName: new FormControl('',[Validators.required, Validators.minLength(2)]) ,
+        lastName: new FormControl('',[Validators.required,Validators.minLength(2)]),
+        email: new FormControl('',[Validators.required,
+          Validators.pattern("[a-z0-9]+@[a-z0-9]+\\.[a-z]{2,4}")]
+        )
       }),
       shippingAddress: this.formBuilder.group({
-        street: [''],
-        city: [''],
-        state: [''],
-        country: [''],
-        zipcode: ['']
+        street: new FormControl('',[Validators.required, Validators.minLength(2)]),
+        city: new FormControl('',[Validators.required, Validators.minLength(2)]),
+        state: new FormControl('',[Validators.required]),
+        country: new FormControl('',[Validators.required]),
+        zipcode: new FormControl('',[Validators.required, Validators.minLength(2)])
       }),
       billingAddress: this.formBuilder.group({
         street: [''],
@@ -40,12 +51,12 @@ export class CheckoutComponent implements OnInit {
         zipcode: ['']
       }),
       creditCard: this.formBuilder.group({
-        cardType: [''],
-        nameOnCard: [''],
-        cardNumber: [''],
-        securityCode: [''],
-        expirationMonth: [''],
-        expirationYear: ['']
+        cardType: new FormControl('',[Validators.required]),
+        nameOnCard: new FormControl('',[Validators.required, Validators.minLength(2)]),
+        cardNumber: new FormControl('',[Validators.required, Validators.minLength(16)]),
+        securityCode: new FormControl('',[Validators.required, Validators.minLength(3)]),
+        expirationMonth: new FormControl('',[Validators.required]),
+        expirationYear: new FormControl('',[Validators.required])
       })
     });
 
@@ -53,11 +64,78 @@ export class CheckoutComponent implements OnInit {
 
     this.populateYears();
 
+    this.populateCountries();
 
     }
 
   onSubmit() {
     console.log(this.checkoutFormGroup.getRawValue());
+    if(this.checkoutFormGroup.invalid){
+      this.checkoutFormGroup.markAllAsTouched();
+    }
+  }
+
+
+  get shippingAddressStreet () {
+
+    return this.checkoutFormGroup.get('shippingAddress.street');
+  }
+
+  get shippingAddressCity () {
+
+    return this.checkoutFormGroup.get('shippingAddress.city');
+  }
+
+  get shippingAddressState () {
+
+    return this.checkoutFormGroup.get('shippingAddress.state');
+  }
+
+  get shippingAddressCountry () {
+
+    return this.checkoutFormGroup.get('shippingAddress.country');
+  }
+
+  get shippingAddressZipCode () {
+
+    return this.checkoutFormGroup.get('shippingAddress.zipcode');
+  }
+
+
+  get firstName () {
+
+    return this.checkoutFormGroup.get('customer.firstName');
+  }
+
+  get lastName () {
+
+    return this.checkoutFormGroup.get('customer.lastName');
+  }
+
+  get email () {
+
+    return this.checkoutFormGroup.get('customer.email');
+  }
+
+  getStates (formGroupName: string) {
+
+    const formGroup = this.checkoutFormGroup.get(formGroupName);
+
+    const countryCode = formGroup.value.country.code;
+
+    this.formService.populateStatesByCountry(countryCode).subscribe(
+      data=> {
+        if(formGroupName === 'shippingAddress'){
+          this.shippingAddressStates = data;
+        }
+        else {
+          this.billingAddressStates = data;
+        }
+        formGroup.get('state').setValue(data[0])
+      }
+    )
+
+
   }
 
   copyAddress (event) {
@@ -70,6 +148,12 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
+  populateCountries () {
+
+    this.formService.populateCountries().subscribe(
+      data=>this.countries = data
+    );
+  }
 
   populateYears () {
 
