@@ -26,13 +26,13 @@ _IN PROGRESS_...
 
 ##
 
-##@Testing
+## @Testing
 
 **Persistence:**
 
 **Spring Data JPA Repository Testing**
 
-##Demo
+## Demo
 
 **Screenshots and video: to be added**
 
