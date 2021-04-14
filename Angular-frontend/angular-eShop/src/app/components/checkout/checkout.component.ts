@@ -4,6 +4,7 @@ import {CreditCardService} from '../../services/credit-card.service';
 import {FormService} from '../../services/form.service';
 import {Country} from '../../common/country';
 import {State} from '../../common/state';
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-checkout',
@@ -24,7 +25,12 @@ export class CheckoutComponent implements OnInit {
 
   billingAddressStates : State [] = [];
 
-  constructor(private formBuilder: FormBuilder, private creditCardService: CreditCardService, private formService: FormService) { }
+  totalPrice : number = 0;
+
+  totalQty: number = 0;
+
+  constructor(private formBuilder: FormBuilder, private creditCardService: CreditCardService, private formService: FormService
+    ,private cartService : CartService) { }
 
   ngOnInit(): void {
 
@@ -33,7 +39,7 @@ export class CheckoutComponent implements OnInit {
         firstName: new FormControl('',[Validators.required, Validators.minLength(2)]) ,
         lastName: new FormControl('',[Validators.required,Validators.minLength(2)]),
         email: new FormControl('',[Validators.required,
-          Validators.pattern("[a-z0-9]+@[a-z0-9]+\\.[a-z]{2,4}")]
+          Validators.pattern('[a-z0-9]+@[a-z0-9]+\\.[a-z]{2,4}')]
         )
       }),
       shippingAddress: this.formBuilder.group({
@@ -65,6 +71,8 @@ export class CheckoutComponent implements OnInit {
     this.populateYears();
 
     this.populateCountries();
+
+    this.reviewCartDetails();
 
     }
 
@@ -174,4 +182,14 @@ export class CheckoutComponent implements OnInit {
   }
 
 
+  private reviewCartDetails() {
+
+    this.cartService.totalQty.subscribe(
+      data=>this.totalQty = data
+    );
+
+    this.cartService.totalPrice.subscribe(
+      data=>this.totalPrice = data
+    );
+  }
 }
