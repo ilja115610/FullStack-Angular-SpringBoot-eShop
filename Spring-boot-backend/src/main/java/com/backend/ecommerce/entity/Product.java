@@ -1,5 +1,6 @@
 package com.backend.ecommerce.entity;
 
+import com.backend.ecommerce.entity.ProductCategory;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
