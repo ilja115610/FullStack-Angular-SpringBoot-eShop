@@ -1,7 +1,5 @@
 # Online shop (eShop)
 
-_IN PROGRESS_...
-
 <u> Full-stack Web Application using Angular & SpringBoot (RestFull API). </u>
 
 ##### Used Technologies & Tools:
@@ -32,8 +30,5 @@ _IN PROGRESS_...
 
 **Spring Data JPA Repository Testing**
 
-## Demo
-
-**Screenshots and video: to be added**
 
 
